@@ -10,11 +10,6 @@ dep-update:
 	pip-compile dev-requirements.in
 
 .PHONY: tests
-test tests: seed
+test tests:
 	. .venv/bin/activate
 	PYTHONPATH=src pytest tests
-
-.PHONY: seed
-seed:
-	. .venv/bin/activate
-	rm -f discounts.db && python scripts/01_generate_mock.py
