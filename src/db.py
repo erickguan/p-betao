@@ -42,5 +42,7 @@ class Storage:
         }
 
         self.user_access = {
-            idx+1: UserAccess(idx+1, txn.user_id, txn.product_id, txn.date + timedelta(days=30) >= CURRENT_DATE) for idx, txn in enumerate(MOCK_TRANSACTIONS)
+            f"{txn.user_id}__{txn.product_id}": UserAccess(idx+1, txn.user_id, txn.product_id, txn.date + timedelta(days=30) >= CURRENT_DATE) for idx, txn in enumerate(MOCK_TRANSACTIONS)
         }
+
+storage = Storage()
